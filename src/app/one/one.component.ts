@@ -7,15 +7,6 @@ import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-one',
-  standalone: true,
-  imports: [
-    FormsModule,
-    NgIf,
-    NgClass,
-    NgForOf,
-    TwoComponent,
-    AsyncPipe
-  ],
   templateUrl: './one.component.html',
   styleUrl: './one.component.css'
 })

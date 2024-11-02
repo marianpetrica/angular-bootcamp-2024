@@ -3,8 +3,6 @@ import {MessageService} from '../../services/message.service';
 
 @Component({
   selector: 'app-three',
-  standalone: true,
-  imports: [],
   templateUrl: './three.component.html',
   styleUrl: './three.component.css'
 })
