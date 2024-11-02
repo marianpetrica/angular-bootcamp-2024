@@ -1,0 +1,39 @@
+<div [ngClass]="containerClasses">
+  <p>{{ title }} Works !</p>
+
+  <button [disabled]="isDisabled">Disable Me</button>
+
+  <button (click)="toggleDisable()">Toggle</button>
+
+  <input type="text" [(ngModel)]="writtenText">
+
+<!--    @if (!isDisabled) {-->
+<!--      <p>Your text here : {{ writtenText }}</p>-->
+<!--    } @else {-->
+<!--      <p>The input is disabled</p>-->
+<!--    }-->
+
+<!--    <ul>-->
+<!--      @for (name of names; track $index) {-->
+<!--        <li>{{ $index }} : {{ name }}</li>-->
+<!--      } @empty {-->
+<!--        <li>No items :(</li>-->
+<!--      }-->
+<!--    </ul>-->
+
+  <ul>
+    <li *ngFor="let name of names; index as $index;">{{ $index }} : {{ name }}</li>
+  </ul>
+
+
+  <p *ngIf="!isDisabled ; else paragraph">Your text here : {{ writtenText }}</p>
+  <ng-template #paragraph>
+    <p>The input is disabled</p>
+  </ng-template>
+
+  <app-two [name]="componentTwoName" (messageEmitter)="handleMessageFromTwo($event)"></app-two>
+
+
+
+</div>
+
