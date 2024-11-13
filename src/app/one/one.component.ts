@@ -17,7 +17,7 @@ export class OneComponent {
   writtenText: string = '';
   containerClasses: string[] = ['container'];
   names: string[] = ["Ana", "Marian"];
-  componentTwoName: string = "From Component One";
+  componentTwoName = "From Component One";
 
   constructor(private _messageService: MessageService) {
     this._messageService.subjectValues.subscribe(message =>{
