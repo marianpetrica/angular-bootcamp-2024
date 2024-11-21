@@ -31,6 +31,8 @@ export function getCourseById(req: Request, res: Response) {
 
     const courses:any = Object.values(COURSES);
 
+  console.log("all courses : " + JSON.stringify(COURSES))
+
     // @ts-ignore
   const course = courses.find(course => course.id == courseId);
 

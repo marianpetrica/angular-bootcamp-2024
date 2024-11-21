@@ -1,0 +1,22 @@
+
+<div class="courses-panel">
+
+  <button mat-fab extended color="accent" (click)="addNewCourse()" class="add-button">
+    Add New Course<mat-icon>add</mat-icon>
+  </button>
+
+  <mat-tab-group>
+
+    <mat-tab label="Beginners">
+      <app-course-card-list></app-course-card-list>
+    </mat-tab>
+
+    <mat-tab label="Advanced">
+      <app-course-card-list></app-course-card-list>
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+</div>
+

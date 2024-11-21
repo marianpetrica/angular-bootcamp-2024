@@ -1,4 +1,4 @@
-export const COURSES: any = {
+export let COURSES: any = {
 
 
   17: {
