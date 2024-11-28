@@ -15,19 +15,23 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} fr
 import {CourseCardListComponent} from './course-card-list/course-card-list.component';
 import {CourseDialogComponent} from './course-dialog/course-dialog.component';
 import {MatDialogActions, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
-import {MatFormField} from '@angular/material/form-field';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import { ConcatPipe } from './services/concat.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CourseCardListComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
+    ConcatPipe
   ],
   imports: [
     BrowserModule,
@@ -60,11 +64,14 @@ import {provideNativeDateAdapter} from '@angular/material/core';
     MatDatepicker,
     MatDialogActions,
     MatFabButton,
-    MatMiniFabButton
+    MatMiniFabButton,
+    MatProgressSpinner,
+    MatLabel
   ],
   providers: [
     provideAnimationsAsync(),
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

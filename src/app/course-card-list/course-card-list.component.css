@@ -11,3 +11,7 @@
   margin-right: 5px;
 }
 
+
+.disabled{
+  background-color: grey;
+}

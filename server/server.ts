@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 const cors = require('cors');
 
-app.use(cors({origin: true}));
+app.use(cors());
 
 app.route('/api/courses').get(getAllCourses);
 
@@ -29,6 +29,11 @@ app.route('/api/lessons').get(searchLessons);
 app.route('/api/courses/:id').put(updateCourse);
 
 app.route('/api/login').post(loginUser);
+
+app.route('/api/wait').get(async (req, res) => {
+  await new Promise(resolve => setTimeout(resolve, 5000));
+  return  res.status(200).json('Done from server 😁');
+})
 
 
 const httpServer = app.listen(9000, () => {

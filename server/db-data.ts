@@ -11,7 +11,8 @@ export let COURSES: any = {
     lessonsCount: 10,
     seqNo: 0,
     url: 'reactive-angular-course',
-    price: 50
+    price: 50,
+    isDisabled: false
 
   },
   3: {
@@ -24,7 +25,8 @@ export let COURSES: any = {
     lessonsCount: 10,
     seqNo: 2,
     url: 'rxjs-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
   4: {
@@ -37,7 +39,8 @@ export let COURSES: any = {
     seqNo: 1,
     url: 'ngrx-course',
     promo: false,
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
 
@@ -50,7 +53,8 @@ export let COURSES: any = {
     category: 'BEGINNER',
     seqNo: 3,
     url: 'angular-core-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
 
@@ -65,7 +69,8 @@ export let COURSES: any = {
     lessonsCount: 10,
     seqNo: 4,
     url: 'angular-for-beginners',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
   12: {
@@ -78,7 +83,8 @@ export let COURSES: any = {
     url: 'angular-testing-course',
     lessonsCount: 10,
     promo: false,
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
 
@@ -91,7 +97,8 @@ export let COURSES: any = {
     category: 'BEGINNER',
     seqNo: 6,
     url: 'serverless-angular',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
   16: {
@@ -103,7 +110,8 @@ export let COURSES: any = {
     category: 'BEGINNER',
     seqNo: 7,
     url: 'stripe-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
 
@@ -117,7 +125,8 @@ export let COURSES: any = {
     seqNo: 8,
     url: 'nestjs-course',
     promo: false,
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
 
@@ -131,7 +140,8 @@ export let COURSES: any = {
     lessonsCount: 11,
     seqNo: 9,
     url: 'angular-security-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
   7: {
@@ -144,7 +154,8 @@ export let COURSES: any = {
     lessonsCount: 8,
     seqNo: 10,
     url: 'angular-pwa-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
   8: {
@@ -156,7 +167,8 @@ export let COURSES: any = {
     category: 'ADVANCED',
     seqNo: 11,
     url: 'angular-advanced-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
   9: {
@@ -168,7 +180,8 @@ export let COURSES: any = {
     category: 'BEGINNER',
     seqNo: 12,
     url: 'typescript-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   },
 
   11: {
@@ -179,7 +192,8 @@ export let COURSES: any = {
     category: 'BEGINNER',
     seqNo: 14,
     url: 'angular-material-course',
-    price: 50
+    price: 50,
+    isDisabled: false
   }
 
 };
