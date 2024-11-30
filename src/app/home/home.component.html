@@ -11,13 +11,13 @@
 
       <mat-tab label="Beginners">
         <h2>Last Updated Course Id : {{number()}}</h2>
-
+<!--        display only begginer courses here-->
         <app-course-card-list [courses] = "(this.courses | async) ?? []"></app-course-card-list>
       </mat-tab>
-
-      <!--      <mat-tab label="Advanced">-->
-      <!--        <app-course-card-list></app-course-card-list>-->
-      <!--      </mat-tab>-->
+      <!--        display only advanced courses here-->
+            <mat-tab label="Advanced">
+              <app-course-card-list></app-course-card-list>
+            </mat-tab>
 
     </mat-tab-group>
   }
