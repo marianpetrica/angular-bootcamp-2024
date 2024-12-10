@@ -24,6 +24,8 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import { ConcatPipe } from './services/concat.pipe';
+import { LoginComponent } from './login/login.component';
+import { LoginChildComponent } from './login-child/login-child.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ConcatPipe } from './services/concat.pipe';
     HomeComponent,
     CourseCardListComponent,
     CourseDialogComponent,
-    ConcatPipe
+    ConcatPipe,
+    LoginComponent,
+    LoginChildComponent
   ],
   imports: [
     BrowserModule,
