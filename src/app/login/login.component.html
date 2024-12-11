@@ -1,4 +1,34 @@
-<p>login works!</p>
+<mat-card class="login-container">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form class="login-form" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" >
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input #email="ngModel" matInput required email type="email" placeholder="Email..." [(ngModel)]="model.email"
+               name="email" (input)="checkInput(email)">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input #password="ngModel" matInput required minlength="6" type="password" placeholder="Password..."
+               [(ngModel)]="model.password" name="password">
+      </mat-form-field>
+      <ul *ngIf="loginForm.touched">
+        <li *ngIf="email.invalid">Email is invalid</li>
+        <li *ngIf="email.errors?.['email']">Email is the wrong format</li>
+        <li *ngIf="password.invalid">Password is invalid</li>
+        <li *ngIf="password.errors?.['minlength']">Password is invalid because minLength</li>
+        <li *ngIf="loginForm.invalid">Whole form is invalid</li>
+        <li *ngIf="email.errors?.['orgEnding']">{{email.getError('orgEnding')}}</li>
+      </ul>
 
-<button (click)="onBackClick()">Take me back one time</button>
-<router-outlet></router-outlet>
+      <button mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </form>
+
+    {{ model.email | json }}
+    {{ model.password | json }}
+
+  </mat-card-content>
+
+</mat-card>

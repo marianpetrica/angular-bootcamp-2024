@@ -1,7 +1,7 @@
 import {Component, OnInit, Signal} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
-import {filter, Observable, tap} from 'rxjs';
+import {merge, Observable, of, startWith, switchMap, tap} from 'rxjs';
 import {Course} from '../model/course';
 import {CourseService} from '../services/course.service';
 import {NumberService} from '../services/number.service';
@@ -15,19 +15,36 @@ export class HomeComponent implements OnInit {
   isCardListDisabled = false;
 
   courses: Observable<Course[]> = new Observable();
+  showLoading = true;
 
   number: Signal<number>;
 
   constructor(private dialog: MatDialog,
               private courseService: CourseService,
-              private numberService : NumberService) {
-    this.number= this.numberService.value;
+              private numberService: NumberService) {
+    this.number = this.numberService.value;
 
 
   }
 
   ngOnInit(): void {
-    this.courses = this.courseService.getAllCourses();
+    this.initData();
+  }
+
+  private initData() {
+    this.courses = this.courseService.getAllCourses()
+      .pipe(
+        tap(
+          {
+            next: () => {
+              this.showLoading = true
+            },
+            finalize: () => {
+              this.showLoading = false
+            }
+          }
+        )
+      );
   }
 
   private async fetchWithAsync() {
@@ -73,8 +90,8 @@ export class HomeComponent implements OnInit {
     // this.blockUIWithRequest();
     // this.nonBlockingOperation();
     // this.fetchRequest();
-    let data = await this.fetchWithAsync();
-    console.log(data)
+    // let data = await this.fetchWithAsync();
+    // console.log(data)
 
     const dialogConfig = new MatDialogConfig();
 
@@ -88,10 +105,12 @@ export class HomeComponent implements OnInit {
 
     dialogRef.afterClosed()
       .pipe(
-        filter(val => !!val),
-        tap(() => console.log("Dialog closed"))
-      )
-      .subscribe();
+        switchMap(data => {
+          return this.courseService.createCourse(data)
+        })
+      ).subscribe(newCourse => {
+        this.initData();
+    })
 
   }
 

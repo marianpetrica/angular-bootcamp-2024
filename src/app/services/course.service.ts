@@ -12,6 +12,10 @@ export class CourseService {
 
   }
 
+  createCourse(course: Course) {
+    return this.http.post<Course>("http://localhost:9000/api/courses", course);
+  }
+
   getAllCourses(): Observable<Course[]> {
     return this.http.get<{ payload: Course[] }>("http://localhost:9000/api/courses")
       .pipe(

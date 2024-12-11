@@ -45,14 +45,12 @@ export function addCourse(req: Request, res: Response) {
   newCourse = {id: newId, ...changes}; // Create the new course object
 
   COURSES[newId] = newCourse; // Add the new course to the COURSES object
+  COURSES[newId].id = newId;
 
   console.log("the new course is : " + JSON.stringify(COURSES[newId]));
 
-  setTimeout(() => {
+  res.status(200).json(COURSES[newId]);
 
-    res.status(200).json(COURSES[newId]);
-
-  }, 2000);
 }
 
 export function deleteCourse(req: Request, res: Response) {

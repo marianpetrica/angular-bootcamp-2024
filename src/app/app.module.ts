@@ -15,17 +15,16 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} fr
 import {CourseCardListComponent} from './course-card-list/course-card-list.component';
 import {CourseDialogComponent} from './course-dialog/course-dialog.component';
 import {MatDialogActions, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {provideHttpClient} from '@angular/common/http';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
-import { ConcatPipe } from './services/concat.pipe';
-import { LoginComponent } from './login/login.component';
-import { LoginChildComponent } from './login-child/login-child.component';
+import {ConcatPipe} from './services/concat.pipe';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,6 @@ import { LoginChildComponent } from './login-child/login-child.component';
     CourseDialogComponent,
     ConcatPipe,
     LoginComponent,
-    LoginChildComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +59,7 @@ import { LoginChildComponent } from './login-child/login-child.component';
     MatInput,
     MatDialogTitle,
     FormsModule,
+    ReactiveFormsModule,
     MatSelect,
     MatOption,
     MatDatepickerInput,
@@ -70,7 +69,8 @@ import { LoginChildComponent } from './login-child/login-child.component';
     MatFabButton,
     MatMiniFabButton,
     MatProgressSpinner,
-    MatLabel
+    MatLabel,
+    MatError
   ],
   providers: [
     provideAnimationsAsync(),
