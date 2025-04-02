@@ -1,33 +1,28 @@
 <mat-card class="login-container">
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
-    <form class="login-form" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" >
+    <form class="login-form" #mainForm="ngForm" (ngSubmit)="login(mainForm)">
+
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input #email="ngModel" matInput required email type="email" placeholder="Email..." [(ngModel)]="model.email"
-               name="email" (input)="checkInput(email)">
+        <input matInput #email="ngModel" type="email" (ngModelChange)="checkEmail(email)"  required placeholder="Email..." name="email" [(ngModel)]="model.email" >
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input #password="ngModel" matInput required minlength="6" type="password" placeholder="Password..."
-               [(ngModel)]="model.password" name="password">
+                <input matInput #password="ngModel" type="password" required minlength="6" placeholder="Password..." name="password" ngModel>
       </mat-form-field>
-      <ul *ngIf="loginForm.touched">
-        <li *ngIf="email.invalid">Email is invalid</li>
-        <li *ngIf="email.errors?.['email']">Email is the wrong format</li>
-        <li *ngIf="password.invalid">Password is invalid</li>
-        <li *ngIf="password.errors?.['minlength']">Password is invalid because minLength</li>
-        <li *ngIf="loginForm.invalid">Whole form is invalid</li>
-        <li *ngIf="email.errors?.['orgEnding']">{{email.getError('orgEnding')}}</li>
-      </ul>
 
-      <button mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid">
+      <button mat-raised-button color="accent" type="submit" [disabled]="mainForm.invalid">
         Login
       </button>
-    </form>
+      <ul>
+        <li *ngIf="email.invalid">Email is required!</li>
+        <li *ngIf="password.errors?.['required']">Password is required!</li>
+        <li *ngIf="password.errors?.['minlength']">Password must be 6 char or more!</li>
+        <li *ngIf="email.errors?.['checkOrg']">{{email.getError('checkOrg')}}</li>
+      </ul>
 
-    {{ model.email | json }}
-    {{ model.password | json }}
+    </form>
 
   </mat-card-content>
 

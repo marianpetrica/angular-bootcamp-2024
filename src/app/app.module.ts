@@ -25,6 +25,7 @@ import {provideHttpClient} from '@angular/common/http';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {ConcatPipe} from './services/concat.pipe';
 import {LoginComponent} from './login/login.component';
+import {MatCheckbox} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import {LoginComponent} from './login/login.component';
     MatMiniFabButton,
     MatProgressSpinner,
     MatLabel,
-    MatError
+    MatError,
+    MatCheckbox
   ],
   providers: [
     provideAnimationsAsync(),

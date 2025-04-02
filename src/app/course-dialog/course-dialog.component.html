@@ -1,15 +1,13 @@
 <mat-dialog-content>
   <form [formGroup]="formGroup" id="mainForm" (ngSubmit)="save()">
+      <mat-checkbox #checkbox>Description?</mat-checkbox>
     <mat-form-field>
       <input matInput placeholder="Course Description" formControlName="description">
-      <mat-error *ngIf="courseDescription?.hasError('required')">Field is mandatory</mat-error>
-      <mat-error *ngIf="courseDescription?.hasError('containsStr')">Field does not contain asd</mat-error>
+      <mat-error *ngIf="courseDescription?.getError('required')">Input is required</mat-error>
+      <mat-error *ngIf="courseDescription?.getError('containsStr')">Input must contain asd</mat-error>
     </mat-form-field>
-
     <mat-form-field>
-      <textarea matInput placeholder="Long Description" formControlName="longDescription"></textarea>
-      <mat-error *ngIf="longDescription?.hasError('required')">Field is mandatory</mat-error>
-      <mat-error *ngIf="longDescription?.hasError('minlength')">Field should be longer</mat-error>
+      <textarea matInput placeholder="Long Description" formControlName="longInput"></textarea>
     </mat-form-field>
 
     <mat-form-field>
@@ -26,7 +24,6 @@
         </mat-option>
 
       </mat-select>
-      <mat-error *ngIf="category?.hasError('required')">Pick a category</mat-error>
     </mat-form-field>
 
   </form>
@@ -37,8 +34,7 @@
 
   <button mat-raised-button
           (click)="close()">
-    Close
-  </button>
+    Close</button>
 
   <button mat-raised-button color="primary" type="submit" [disabled]="formGroup.invalid" form="mainForm">Save</button>
 

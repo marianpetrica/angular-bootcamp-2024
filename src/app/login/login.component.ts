@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {User} from '../model/user';
-import {NgForm, NgModel} from '@angular/forms';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
+import {User} from '../model/user';
+import {NgForm, NgModel} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -10,32 +11,34 @@ import {Router} from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  model: User = {} as User;
+  model = {} as User;
+
 
   constructor(private loginService: LoginService,
-              private router:Router) {
+              private router: Router,
+              private http: HttpClient) {
   }
 
 
-  onLogin(loginForm: NgForm) {
-    const user = loginForm.value as User;
-    console.log(user)
+  checkEmail(email: NgModel) {
+    console.log("Email changed")
+    console.log(email.value)
+    const val = email.value as string;
 
-    this.loginService.login(user)
-      .subscribe(response=>{
-        console.log(response)
+    if (!val.includes(".ibm")) {
+      email.control.setErrors({checkOrg: "Email must end with .ibm"})
+    }
+  }
+
+  login(mainForm: NgForm) {
+    console.log("Login was clicked")
+    console.log(mainForm.value)
+
+    this.http.post<User>("http://localhost:9000/api/login", mainForm.value)
+      .subscribe(val => {
+        console.log(val);
         this.router.navigate([""]);
       })
-  }
-
-
-  checkInput(email: NgModel) {
-    console.log("Inside checkInput")
-    console.log(email.value)
-    const value = email.value as string;
-    if (!value.endsWith('.ibm')) {
-      email.control.setErrors({orgEnding: "Email must end with .ibm"})
-    }
   }
 
 }

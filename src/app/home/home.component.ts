@@ -104,12 +104,9 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(CourseDialogComponent, dialogConfig);
 
     dialogRef.afterClosed()
-      .pipe(
-        switchMap(data => {
-          return this.courseService.createCourse(data)
-        })
-      ).subscribe(newCourse => {
-        this.initData();
+     .subscribe(newCourse => {
+       console.log("From dialog")
+       console.log(newCourse)
     })
 
   }

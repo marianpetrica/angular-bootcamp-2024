@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {CourseService} from '../services/course.service';
 import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {Course} from '../model/course';
-import {CourseService} from '../services/course.service';
 
 export function validateContains(): ValidatorFn {
   return (control): ValidationErrors | null => {
@@ -18,11 +18,12 @@ export function validateContains(): ValidatorFn {
 })
 export class CourseDialogComponent {
 
-  formGroup = new FormGroup({
-    description: new FormControl('', {validators: [Validators.required, validateContains()]}),
-    longDescription: new FormControl('', {validators: [Validators.required, Validators.minLength(5)]}),
-    category: new FormControl('', {validators: [Validators.required]}),
+  formGroup: FormGroup = new FormGroup({
+    description: new FormControl('', [Validators.required, validateContains()]),
+    longInput: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required])
   });
+
 
   constructor(private dialogRef: MatDialogRef<CourseDialogComponent>,
               @Inject(MAT_DIALOG_DATA) course: any,
@@ -36,13 +37,13 @@ export class CourseDialogComponent {
 
   save() {
     console.log("From save")
+    console.log(this.formGroup.value)
     const value = this.formGroup.value as Course;
-    console.log(value)
     this.dialogRef.close(value);
   }
 
   get courseDescription() {
-    return this.formGroup.get('courseDescription')
+    return this.formGroup.get('description');
   };
 
   get longDescription() {
